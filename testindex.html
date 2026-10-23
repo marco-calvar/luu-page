@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1c0914">
+<title>Felices 4 meses ❤️</title>
+
+<!-- Tipografías: Cormorant Garamond (títulos/texto) + Caveat (letra escrita a mano) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500;1,600&display=swap" rel="stylesheet">
+
+<style>
+/* ================= PALETA ================= */
+:root{
+  --noche:#1c0914; --noche2:#3f1530;
+  --vino:#6e1f35;  --rosa:#e59aab; --rosa-suave:#f7d9de;
+  --oro:#d9a954;   --oro-osc:#b8893b; --oro-claro:#ffd978;
+  --corazon:#d84d63; --corazon-osc:#9f2945;
+  --papel:#fbf1de; --papel2:#f2dfbd; --tinta:#4a2a2f;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --mano:'Caveat','Segoe Script',cursive;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%}
+body{min-height:100dvh;display:grid;place-items:center;background:#0e0408;font-family:var(--serif);color:var(--papel)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--oro-claro);outline-offset:2px}
+
+/* Pantalla de teléfono: completa en celular, centrada con marco en PC */
+.app{position:relative;width:100%;max-width:430px;height:100dvh;overflow:hidden;
+  background:radial-gradient(90% 50% at 50% 100%,rgba(229,154,171,.28),transparent 70%),
+             linear-gradient(180deg,var(--noche),#2c0f21 50%,var(--noche2))}
+@media (min-width:520px){
+  .app{height:min(880px,94dvh);border-radius:38px;border:9px solid #090205;box-shadow:0 30px 90px rgba(0,0,0,.7)}
+}
+
+/* ================= CIELO DE FONDO ================= */
+.sky{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.sky i{position:absolute;border-radius:50%;background:#fff6e2;animation:tw 4s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.12}50%{opacity:.85}}
+.sky span{position:absolute;bottom:-40px;color:var(--rosa);opacity:0;animation:subir linear infinite}
+@keyframes subir{0%{transform:translateY(0) rotate(-10deg);opacity:0}15%{opacity:.35}85%{opacity:.25}
+  100%{transform:translateY(-110dvh) rotate(12deg);opacity:0}}
+
+/* ================= SCROLL POR ESCENAS ================= */
+.scroll{position:relative;z-index:1;height:100%;overflow-y:auto;scroll-snap-type:y proximity;
+  scrollbar-width:none;overscroll-behavior:contain}
+.scroll::-webkit-scrollbar{display:none}
+.scene{position:relative;min-height:100%;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;
+justify-content:center;gap:14px;text-align:center;overflow:hidden;
+  padding:calc(66px + env(safe-area-inset-top)) 22px calc(34px + env(safe-area-inset-bottom))}
+.scene::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 18%, rgba(255,255,255,.09), transparent 26%);pointer-events:none;z-index:0}
+.scene > *{position:relative;z-index:1}
+.scene h2{margin:0;font-style:italic;font-weight:600;font-size:31px;line-height:1.1;color:var(--papel)}
+.hint{margin:0;font-family:var(--mano);font-size:22px;color:var(--oro)}
+.rv{opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s ease}
+.scene-art{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;background-size:cover;background-position:center;background-repeat:no-repeat;filter:saturate(1.1) contrast(1.08)}
+.scene-ocean{background-image:url('raya.jpeg');
+  background-color:#10253d;
+  background-size:cover;background-position:center center;background-repeat:no-repeat;}
+.scene-ocean::before, .scene-ocean::after{content:"";position:absolute;left:-8%;right:-8%;height:46%;border-radius:50%;background:transparent;}
+.scene-ocean::before{bottom:8%;transform:rotate(-3deg);background:transparent;} .scene-ocean::after{bottom:-6%;transform:rotate(2deg);background:transparent;}
+.scene-forest{background-image:url('perezoso.jpg');
+  background-color:#4d655d;
+  background-size:cover; background-position:50% 55%; background-repeat:no-repeat;}
+.scene-forest::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(25,29,32,.24));}
+.scene-cosy{background-image:url('luke.jpg');
+  background-color:#ae7d67;
+  background-size:cover; background-position:72% center; background-repeat:no-repeat;}
+.scene-cosy::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(84,53,42,.18));}
+.sloth-frame{
+  position:relative;width:min(100%,330px);height:252px;border-radius:22px;overflow:hidden;
+  background:#d6d1c8 url('perezoso.jpg') center/cover no-repeat;
+  border:2px solid rgba(255,255,255,.45);box-shadow:0 18px 36px rgba(0,0,0,.18);
+}
+.sloth-frame::before{content:"";position:absolute;inset:12px;border:2px solid rgba(255,255,255,.5);border-radius:14px;pointer-events:none}
+.scene-luke-full{
+  background-image:url('luke.jpg');
+  background-color:#d7d3c8;
+  background-size:cover; background-position:72% center; background-repeat:no-repeat;
+}
+.scene-luke-full::before{content:"";position:absolute;inset:0;background:rgba(255,255,255,0.02);}
+.scene-ticket{background-image:url('luke.jpg');
+  background-color:#1d1a2d;
+  background-size:cover; background-position:60% center; background-repeat:no-repeat;
+}
+.scene-ticket::before{
+  content:"";position:absolute;inset:0;
+  background:
+   radial-gradient(circle at 12% 18%, rgba(255,255,255,.9) 0 1.4px, transparent 2px),
+   radial-gradient(circle at 32% 42%, rgba(255,255,255,.7) 0 1.1px, transparent 2px),
+   radial-gradient(circle at 68% 26%, rgba(255,255,255,.8) 0 1.5px, transparent 2.2px),
+   radial-gradient(circle at 80% 65%, rgba(255,255,255,.75) 0 1.3px, transparent 2px),
+   linear-gradient(180deg, rgba(5,7,20,.25), rgba(7,10,22,.74) 40%, rgba(12,10,22,.9) 100%);
+}
+.scene-ticket::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%, rgba(161,145,255,.18), transparent 52%);}
+.scene-galaxy{
+  background:
+   radial-gradient(circle at 20% 18%, rgba(255,255,255,.9) 0 1.6px, transparent 2px),
+   radial-gradient(circle at 72% 24%, rgba(255,255,255,.75) 0 1.4px, transparent 2px),
+   radial-gradient(circle at 50% 58%, rgba(255,255,255,.8) 0 1.8px, transparent 2.5px),
+   radial-gradient(circle at 34% 72%, rgba(255,255,255,.7) 0 1.2px, transparent 2px),
+   radial-gradient(circle at 80% 70%, rgba(255,255,255,.8) 0 1.7px, transparent 2.4px),
+   linear-gradient(180deg, #070b1b 0%, #101633 30%, #1c0d29 100%);
+}
+.scene-galaxy::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%, rgba(170,140,255,.18), transparent 58%);}
+.scene-galaxy::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.44));}
+.photo-frame{position:relative;width:min(76vw,300px);padding:12px;border-radius:22px;background:linear-gradient(145deg,#fefaf7,#d7d0cb);box-shadow:0 20px 35px rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.7);}
+.photo-frame::before{content:"";position:absolute;inset:8px;border:2px solid rgba(87,60,70,.7);border-radius:16px;pointer-events:none}
+.photo-frame .photo{width:100%;aspect-ratio:4/5;border-radius:14px;background-image:url('perezoso.jpg');background-size:contain;background-position:center;background-repeat:no-repeat;background-color:#d7d5d1;}
+.animal-svg{position:absolute;inset:auto 0 0 0;width:100%;height:78%;display:block;filter:drop-shadow(0 18px 24px rgba(0,0,0,.12));opacity:.96}
+.sloth-svg{animation:slothSwing 5.5s ease-in-out infinite}
+.shih-svg{animation:dogBreathe 4.5s ease-in-out infinite}
+.gallery-grid{display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:10px;width:100%;max-width:340px;position:relative;z-index:1}
+.mini-photo-card{position:relative;height:160px;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.18);box-shadow:0 20px 30px rgba(0,0,0,.18);background-size:cover;background-position:center; background-repeat:no-repeat;}
+.mini-photo-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.18));}
+.mini-photo-card span{display:none}
+@keyframes mantaFloat{0%,100%{transform:translateX(-2%) translateY(0) rotate(-1deg)}50%{transform:translateX(3%) translateY(-12px) rotate(2deg)}}
+@keyframes slothSwing{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes dogBreathe{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-8px) scale(1.02)}}
+.rv.in{opacity:1;transform:none}
+.later{opacity:0;transition:opacity 1s ease}
+.later.in{opacity:1}
+.later:not(.in){pointer-events:none}
+
+/* Música */
+.music{position:absolute;z-index:40;top:calc(12px + env(safe-area-inset-top));right:12px;width:42px;height:42px;
+  border-radius:50%;border:1.5px solid var(--oro);background:rgba(28,9,20,.85);color:var(--oro-claro);
+  font-size:15px;cursor:pointer;backdrop-filter:blur(4px)}
+
+/* Corazoncitos al tocar */
+.tap{position:absolute;z-index:30;pointer-events:none;color:var(--rosa);font-size:22px;
+  transform:translate(-50%,-50%);animation:tap 1.1s ease-out forwards}
+@keyframes tap{to{transform:translate(-50%,-170%) scale(1.5);opacity:0}}
+
+/* ================= ESCENA 1: HERO + CONTADOR ================= */
+.hero-copy{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%;opacity:0;visibility:hidden}
+.hero.go .hero-copy{opacity:1;visibility:visible;animation:entra .9s cubic-bezier(.2,.8,.2,1) both}
+.hero-copy > *{opacity:0;transform:translateY(18px)}
+.hero.go .hero-copy > *{animation:entra .9s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i) * .16s);opacity:1}
+@keyframes entra{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.big4{font-weight:700;font-size:min(46vw,200px);line-height:.8;margin-top:-6px;
+  background:linear-gradient(180deg,#ffeab5,var(--oro) 55%,#9c6a24);-webkit-background-clip:text;background-clip:text;
+  color:transparent;filter:drop-shadow(0 6px 26px rgba(217,169,84,.35))}
+.hero h1{margin:0;font-style:italic;font-weight:600;font-size:36px;line-height:1}
+.lead{margin:0;max-width:30ch;font-size:20px;line-height:1.3;color:var(--rosa-suave)}
+.cnt{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;width:100%;margin-top:6px}
+.cnt div{background:rgba(251,241,222,.07);border:1px solid rgba(217,169,84,.35);border-radius:14px;padding:9px 0 7px}
+.cnt b{display:block;font-size:27px;line-height:1.05;color:var(--papel);font-variant-numeric:tabular-nums}
+.cnt small{font-size:13px;color:var(--rosa-suave);opacity:.85}
+.prog{width:100%;text-align:left;font-size:15px;color:var(--rosa-suave)}
+.bar{height:6px;margin-top:6px;border-radius:9px;background:rgba(251,241,222,.12);overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:9px;background:linear-gradient(90deg,var(--rosa),var(--oro-claro));transition:width 1s}
+.down{font-family:var(--mano);font-size:21px;color:var(--oro)}
+.down::after{content:"⌄";display:block;font-size:26px;line-height:.6;animation:baja 1.6s ease-in-out infinite}
+@keyframes baja{50%{transform:translateY(6px)}}
+
+/* ================= ESCENA 2: CONSTELACIÓN ================= */
+#const{width:min(100%,340px);height:auto;overflow:visible}
+#heart{fill:rgba(216,77,99,.12);stroke:var(--corazon);stroke-width:2.3;stroke-linejoin:round;
+  stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 2.4s ease,fill 1.6s ease 1.8s,filter 1.6s ease 1.8s}
+#const.done #heart{stroke-dashoffset:0;fill:rgba(216,77,99,.32);filter:drop-shadow(0 0 10px rgba(216,77,99,.95))}
+.ln{stroke:rgba(255,217,120,.7);stroke-width:1;stroke-dasharray:3 4;opacity:0;transition:opacity .8s}
+.ln.on{opacity:1}
+.star{cursor:pointer}
+.star path{fill:#f3e7cf;opacity:.55;transition:all .5s}
+.star .pulse{fill:none;stroke:var(--corazon);stroke-width:1;transform-box:fill-box;transform-origin:center;animation:pulso 2.2s ease-out infinite}
+@keyframes pulso{0%{transform:scale(.6);opacity:.9}100%{transform:scale(1.7);opacity:0}}
+.star text{fill:var(--rosa-suave);font-family:var(--mano);font-size:17px;text-anchor:middle}
+.star.on path{fill:var(--corazon);opacity:1;filter:drop-shadow(0 0 6px rgba(216,77,99,.8))}
+.star.on .pulse{display:none}
+
+/* Hoja con la foto (se abre al tocar una estrella) */
+.sheet{position:absolute;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;
+  background:rgba(20,6,13,.78);backdrop-filter:blur(5px);opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+.sheet.show{opacity:1;visibility:visible}
+.sheet-in{display:flex;flex-direction:column;align-items:center;gap:12px;transform:translateY(34px) scale(.96);
+  transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.sheet.show .sheet-in{transform:none}
+.tip{margin:0;font-family:var(--mano);font-size:20px;color:var(--rosa-suave)}
+
+/* Flip 3D (polaroid / carta) */
+.flip{width:min(78vw,300px);height:min(58dvh,430px);perspective:1100px;cursor:pointer}
+.flip-in{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .85s cubic-bezier(.4,.2,.2,1)}
+.flip.flipped .flip-in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;border-radius:18px;box-shadow:0 14px 36px rgba(0,0,0,.55);
+  backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.back{transform:rotateY(180deg)}
+.front{background:#fffaf0;color:var(--tinta);padding:14px 14px 0;display:flex;flex-direction:column}
+.front::before{content:"";position:absolute;top:-10px;left:50%;width:84px;height:24px;margin-left:-42px;
+  background:rgba(229,154,171,.7);transform:rotate(-3deg);border-radius:2px;z-index:2}
+.foto{flex:1;min-height:0;border-radius:4px;overflow:hidden;background:var(--rosa-suave);position:relative}
+.foto img{width:100%;height:100%;object-fit:cover;display:block}
+.foto.nofoto img{display:none}
+.foto.nofoto::after{content:"Aquí va tu foto ❤️";position:absolute;inset:0;display:grid;place-items:center;
+  font-family:var(--mano);font-size:24px;color:var(--vino)}
+.cap{height:76px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.cap strong{font-family:var(--mano);font-size:30px;color:var(--vino);line-height:1}
+.cap span{font-size:15px;opacity:.7;margin-top:3px}
+.paper{background:repeating-linear-gradient(transparent 0 31px,rgba(184,137,59,.28) 31px 32px),var(--papel);
+  border:1px solid rgba(184,137,59,.55);color:var(--tinta)}
+.back{padding:22px 22px 16px;display:flex;flex-direction:column}
+.back h2{margin:0 0 4px;font-family:var(--mano);font-style:normal;font-weight:700;font-size:32px;line-height:32px;color:var(--vino)}
+.back p{margin:0;font-family:var(--mano);font-weight:500;font-size:22px;line-height:32px;overflow:auto;text-align:left}
+.back .firma{margin-top:auto;text-align:right;color:var(--vino);font-weight:700}
+
+/* ================= ESCENA 3: BOLETOS ================= */
+.tickets{display:flex;flex-direction:column;gap:12px;width:100%}
+.ticket{display:flex;width:100%;min-height:84px;padding:0;border:0;text-align:left;cursor:pointer;
+  background:var(--papel);color:var(--tinta);border-radius:12px;transition:transform .2s,filter .4s;
+  -webkit-mask:radial-gradient(circle 9px at calc(100% - 88px) 0,#0000 97%,#000) top/100% 51% no-repeat,
+               radial-gradient(circle 9px at calc(100% - 88px) 100%,#0000 97%,#000) bottom/100% 51% no-repeat;
+  mask:radial-gradient(circle 9px at calc(100% - 88px) 0,#0000 97%,#000) top/100% 51% no-repeat,
+       radial-gradient(circle 9px at calc(100% - 88px) 100%,#0000 97%,#000) bottom/100% 51% no-repeat}
+.ticket:active{transform:scale(.98)}
+.tk-txt{flex:1;display:flex;align-items:center;padding:12px 14px;font-size:18px;font-weight:700;line-height:1.2}
+.tk-stub{width:88px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
+  border-left:2px dashed rgba(110,31,53,.45);background:linear-gradient(135deg,#f6dfae,#e0b867);color:var(--vino)}
+.tk-stub i{font-style:normal;font-size:22px}
+.tk-stub em{font-family:var(--mano);font-style:normal;font-weight:700;font-size:18px}
+.ticket.used .tk-txt{opacity:.5}
+.ticket.used .tk-stub{background:var(--vino);color:#fff6e2;animation:sello .5s cubic-bezier(.3,1.6,.5,1)}
+@keyframes sello{from{transform:scale(1.35) rotate(-8deg);opacity:.2}}
+
+/* ================= ESCENA 4: PENDIENTES ================= */
+.todos{display:flex;flex-direction:column;gap:10px;width:100%}
+.todo{display:flex;align-items:center;gap:12px;width:100%;padding:13px 14px;text-align:left;cursor:pointer;
+  background:rgba(251,241,222,.07);border:1px solid rgba(217,169,84,.32);border-radius:14px;font-size:19px;line-height:1.2;color:var(--papel)}
+.chk{flex:none;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--oro);display:grid;place-items:center;
+  color:transparent;font-size:14px;transition:all .3s}
+.todo.on{border-color:var(--rosa)}
+.todo.on .chk{background:var(--rosa);border-color:var(--rosa);color:#fff;transform:scale(1.12)}
+.todo.on .t{color:var(--rosa-suave)}
+
+/* ================= ESCENA 5: CARTA FINAL ================= */
+.letter{width:100%;padding:26px 22px 22px;border-radius:16px;border:3px double var(--oro-osc);color:var(--tinta);
+  background:radial-gradient(circle at 50% 25%,#fff6e2,var(--papel2));box-shadow:0 20px 46px rgba(0,0,0,.5)}
+.letter h2{margin:0 0 8px;font-family:var(--mano);font-style:normal;font-weight:700;font-size:38px;color:var(--vino)}
+.letter p{margin:0;font-family:var(--mano);font-weight:500;font-size:23px;line-height:1.3;text-align:left;white-space:pre-line}
+.letter .rest{visibility:hidden}
+.letter .sig{margin-top:12px;text-align:right;font-weight:700;color:var(--vino)}
+.btn{border:0;border-radius:999px;background:var(--vino);color:#fff6e2;font-weight:700;font-size:20px;padding:13px 26px;
+  cursor:pointer;box-shadow:0 0 0 2px var(--oro),0 8px 22px rgba(0,0,0,.45)}
+.btn:active{transform:scale(.96)}
+.btn.ghost{background:transparent;box-shadow:0 0 0 1.5px var(--rosa-suave);font-size:17px;padding:8px 22px}
+
+/* ================= PORTADA: SOBRE ================= */
+.intro{position:absolute;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:20px;padding:20px;text-align:center;
+  background:radial-gradient(110% 80% at 50% 25%,#4a1832,var(--noche));transition:opacity 1s ease,visibility 1s}
+.intro.gone{opacity:0;visibility:hidden;pointer-events:none}
+.intro h1{margin:0;font-family:var(--mano);font-size:50px;line-height:1;color:var(--papel)}
+.intro h2{margin:8px 0 0;font-style:italic;font-weight:600;font-size:28px;color:var(--oro-claro)}
+.intro p{margin:0;font-family:var(--mano);font-size:22px;color:var(--rosa-suave)}
+.env-wrap{perspective:900px;margin:44px 0 6px}
+.envelope{position:relative;width:min(74vw,290px);aspect-ratio:3/2}
+.env-back{position:absolute;inset:0;background:#b4506a;border-radius:6px;box-shadow:0 16px 40px rgba(0,0,0,.6)}
+.env-letter{position:absolute;left:7%;right:7%;bottom:6%;height:88%;background:var(--papel);z-index:1;border-radius:4px;
+  display:grid;place-items:center;font-family:var(--mano);font-size:30px;color:var(--vino);
+  transition:transform 1s cubic-bezier(.3,.7,.2,1) .6s}
+.env-front{position:absolute;inset:0;z-index:3;background:#cf6f86;border-radius:6px;
+  clip-path:polygon(0 0,50% 55%,100% 0,100% 100%,0 100%)}
+.env-flap{position:absolute;left:0;right:0;top:0;height:55%;z-index:4;background:#a8445f;
+  clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .8s ease,z-index 0s .4s}
+.seal{position:absolute;left:50%;top:55%;z-index:5;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;
+  display:grid;place-items:center;color:#fff6e2;font-size:20px;
+  background:radial-gradient(circle at 35% 30%,var(--oro-claro),var(--oro-osc));box-shadow:0 3px 10px rgba(0,0,0,.5);transition:opacity .3s}
+.envelope.open .env-flap{transform:rotateX(180deg);z-index:0}
+.envelope.open .env-letter{transform:translateY(-62%)}
+.envelope.open .seal{opacity:0}
+
+/* ================= ACCESIBILIDAD ================= */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition-duration:.01s!important;transition-delay:0s!important}
+  .hero>*,.rv{opacity:1!important;transform:none!important}
+  .sky span{display:none}
+}
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================================
+     CONFIGURACIÓN: AQUÍ CAMBIAS TODO (textos, fechas, nombres de fotos)
+     Cada línea marcada con "CAMBIAR AQUÍ" es una que debes personalizar.
+     ===================================================================== -->
+<script>
+const CONFIG = {
+  NOMBRE: "LUISANA",                          // CAMBIAR AQUÍ: su nombre
+  TU_NOMBRE: "Marco",                         // CAMBIAR AQUÍ: tu nombre (firma)
+  FECHA_INICIO: "2026-06-22T00:00:00",        // CAMBIAR AQUÍ: día que empezaron (AAAA-MM-DDTHH:MM:SS)
+
+  INTRO_TEXTO: "Tengo algo para ti",          // CAMBIAR AQUÍ: frase de la portada
+  BOTON_ABRIR: "Abrir",                       // CAMBIAR AQUÍ: texto del botón de la portada
+  HERO_TEXTO: "Hoy, 22 de octubre, quise regalarte algo distinto a un simple mensaje.", // CAMBIAR AQUÍ
+
+  /* 4 meses. Cada uno se abre al tocar una estrella.
+     "foto" = nombre del archivo .jpg en la misma carpeta.
+     "texto" = dedicatoria (máximo ~280 caracteres para que quepa en la carta). */
+  MESES: [
+    { titulo: "Tu mirada", sub: "Lo que me atrapó", foto: "ll.jpg",
+      texto: "Desde el primer momento contigo supe que algo especial estaba empezando. Te admiro tanto que cada día me enamoro más de la forma en que eres, de la forma en que me haces sentir y de lo mucho que quiero seguir descubriéndote a tu lado." },
+    { titulo: "Tu sonrisa", sub: "Lo que me hace bien", foto: "l1.JPG",
+      texto: "Con el tiempo te convertiste en una parte muy profunda de mi vida. Me gusta lo que siento contigo, lo tranquilo, lo real y lo bonito que se vuelve todo cuando estás tú; y quiero seguir aprendiendo a amarte mejor cada día." },
+    { titulo: "Lo nuestro", sub: "Mi lugar favorito eres tú", foto: "l2.JPG",
+      texto: "Hay días en los que pienso en ti y siento que todo lo que quiero es estar más cerca de ti, compartir más momentos y cuidarte de la manera en que te mereces. Contigo todo se siente más cálido, más claro y mucho más hermoso." },
+    { titulo: "Hoy", sub: "Quiero seguir construyendo esto", foto: "l3.JPG",
+      texto: "Cuatro meses no son todo lo que quiero contigo, pero sí son un pequeño reflejo de todo lo que siento: te amo con una intensidad que a veces no sé cómo poner en palabras. No siempre te lo demuestro como quisiera, pero cada día trato de ser mejor para ti porque te mereces todo lo bueno y más." }
+  ],
+  CIERRE_ESTRELLAS: "Y aunque a veces no lo diga bien, te amo mucho y quiero seguir creciendo contigo.",
+
+  VALES_TITULO: "Boletos para canjear",       // CAMBIAR AQUÍ
+  VALES: [                                    // CAMBIAR AQUÍ: puedes poner 2, 3 o 4
+    "Vale por una cita comiendo tu plato favorito",
+    "Vale por una tarde de películas con manta",
+    "Vale por un abrazo largo, sin prisa"
+  ],
+
+  PENDIENTES_TITULO: "Lo que viene",          // CAMBIAR AQUÍ
+  PENDIENTES_HINT: "Toca lo que más te emociona",  // CAMBIAR AQUÍ
+  PENDIENTES: [                               // CAMBIAR AQUÍ: planes de los dos
+    "Más viajes y aventuras juntos",
+    "Más risas en momentos de locura",
+    "Más tardes de café y abrazos",
+    "Más recuerdos que sumar a nuestra historia"
+  ],
+
+  FINAL: {
+    titulo: "Para ti",
+    mensaje: [
+      "Luisana, aunque a veces no lo demuestro como quisiera, te amo mucho más de lo que las palabras alcanzan a decir.",
+      "Te quiero por la forma en que me haces sentir, por lo que traes a mi vida y por todo lo que quiero seguir viviendo contigo. Me importa mucho lo que somos y lo que podemos llegar a ser, y quiero seguir cuidándote, queriéndote y esforzándome por ser mejor cada día para ti."
+    ],
+    firma: "Te quiero mucho",
+    boton: "Por muchos más"
+  }
+};
+</script>
+
+<div class="app" id="app">
+
+  <!-- Cielo estrellado (lo genera el JS) -->
+  <div class="sky" id="sky" aria-hidden="true"></div>
+
+  <!-- Música: pon "musica.mp3" junto a este archivo -->
+  <audio id="musica" src="MILO J - M.A.I (Video Oficial).mp3" loop preload="auto"></audio>
+  <button class="music" id="btnMusica" aria-label="Pausar o reproducir música" hidden>⏸</button>
+
+  <!-- ============ PORTADA: SOBRE ============ -->
+  <section class="intro" id="intro">
+    <div>
+      <h1>Para <span data-nombre></span> ❤️</h1>
+      <h2>Felices 4 meses</h2>
+    </div>
+    <div class="env-wrap">
+      <div class="envelope" id="envelope">
+        <div class="env-back"></div>
+        <div class="env-letter">4 meses ♥</div>
+        <div class="env-front"></div>
+        <div class="env-flap"></div>
+        <div class="seal">♥</div>
+      </div>
+    </div>
+    <p id="introTxt"></p>
+    <button class="btn" id="btnAbrir"></button>
+  </section>
+
+  <!-- ============ EXPERIENCIA (scroll vertical por escenas) ============ -->
+  <main class="scroll" id="scroll">
+
+    <!-- Escena 1: gran 4 + contador en vivo -->
+    <section class="scene hero" id="s1">
+      <div class="scene-art scene-ocean" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <div class="big4" style="--i:0">4</div>
+        <h1 style="--i:1">meses contigo</h1>
+        <p class="lead" id="heroTxt" style="--i:2"></p>
+        <div class="cnt" style="--i:3" aria-label="Tiempo juntos">
+          <div><b id="cMeses">0</b><small>meses</small></div>
+          <div><b id="cDias">0</b><small>días</small></div>
+          <div><b id="cHoras">0</b><small>horas</small></div>
+          <div><b id="cMin">00</b><small>min</small></div>
+          <div><b id="cSeg">00</b><small>seg</small></div>
+        </div>
+        <div class="prog" style="--i:4"><span id="progTxt"></span><div class="bar"><i id="progBar"></i></div></div>
+        <div class="down" style="--i:5">desliza</div>
+      </div>
+    </section>
+
+    <!-- Escena 2: constelación (una estrella por mes) -->
+    <section class="scene scene-galaxy" id="s2">
+      <h2 class="rv">Cuatro meses, cuatro estrellas</h2>
+      <p class="hint rv">Toca cada estrella</p>
+      <svg id="const" class="rv" viewBox="0 0 300 300" role="group" aria-label="Constelación de cuatro estrellas">
+        <path id="heart" pathLength="1" d="M150 255 C60 190 30 130 60 85 C85 48 135 55 150 95 C165 55 215 48 240 85 C270 130 240 190 150 255Z"/>
+        <line class="ln" data-a="0" data-b="1" x1="60" y1="85" x2="150" y2="95"/>
+        <line class="ln" data-a="1" data-b="2" x1="150" y1="95" x2="240" y2="85"/>
+        <line class="ln" data-a="2" data-b="3" x1="240" y1="85" x2="150" y2="255"/>
+        <!-- Cada estrella: <g> con su posición -->
+        <g class="star" data-i="0" transform="translate(60 85)" tabindex="0" role="button" aria-label="Abrir nuestro inicio">
+          <circle class="pulse" r="18"/><circle r="28" fill="transparent"/>
+          <path d="M0 -16 Q3 -3 16 0 Q3 3 0 16 Q-3 3 -16 0 Q-3 -3 0 -16Z"/><text y="36">Inicio</text></g>
+        <g class="star" data-i="1" transform="translate(150 95)" tabindex="0" role="button" aria-label="Abrir lo que siento">
+          <circle class="pulse" r="18"/><circle r="28" fill="transparent"/>
+          <path d="M0 -16 Q3 -3 16 0 Q3 3 0 16 Q-3 3 -16 0 Q-3 -3 0 -16Z"/><text y="36">Tú</text></g>
+        <g class="star" data-i="2" transform="translate(240 85)" tabindex="0" role="button" aria-label="Abrir nuestro mundo">
+          <circle class="pulse" r="18"/><circle r="28" fill="transparent"/>
+          <path d="M0 -16 Q3 -3 16 0 Q3 3 0 16 Q-3 3 -16 0 Q-3 -3 0 -16Z"/><text y="36">Nosotros</text></g>
+        <g class="star" data-i="3" transform="translate(150 255)" tabindex="0" role="button" aria-label="Abrir hoy">
+          <circle class="pulse" r="18"/><circle r="28" fill="transparent"/>
+          <path d="M0 -16 Q3 -3 16 0 Q3 3 0 16 Q-3 3 -16 0 Q-3 -3 0 -16Z"/><text y="-24">Hoy</text></g>
+      </svg>
+      <p class="hint later" id="cierreEst"></p>
+    </section>
+
+    <section class="scene" id="s2b" aria-label="Nuestra historia">
+      <div class="sloth-frame rv" aria-label="Perezoso" role="img"></div>
+      <h2 class="rv">Lo que siento cuando pienso en nosotros</h2>
+      <p class="hint rv">Cosas pequeñas, grandes recuerdos y mucho amor</p>
+      <div class="gallery-grid rv">
+        <div class="mini-photo-card" style="background-image:url('raya.jpeg')"></div>
+        <div class="mini-photo-card" style="background-image:url('perezoso.jpg')"></div>
+        <div class="mini-photo-card" style="background-image:url('luke.jpg')"></div>
+      </div>
+    </section>
+
+    <section class="scene scene-luke-full" id="s2c" aria-label="Foto de Luke">
+    </section>
+
+    <!-- Escena 3: boletos / vales -->
+    <section class="scene scene-ticket" id="s3">
+      <h2 class="rv" id="valesTit"></h2>
+      <p class="hint rv">Tócalos para reclamarlos</p>
+      <div class="tickets" id="tickets"></div>
+    </section>
+
+    <!-- Escena 4: lo que viene -->
+    <section class="scene" id="s4">
+      <h2 class="rv" id="todoTit"></h2>
+      <p class="hint rv" id="todoHint"></p>
+      <div class="todos" id="todos"></div>
+    </section>
+
+    <!-- Escena 5: carta final -->
+    <section class="scene" id="s5">
+      <div class="letter" id="letter">
+        <h2 id="finTit"></h2>
+        <p><span id="typed"></span><span class="rest" id="rest"></span></p>
+        <p class="sig later" id="firmaF"></p>
+      </div>
+      <button class="btn later" id="btnFinal"></button>
+    </section>
+  </main>
+
+  <!-- Hoja con la foto y la carta de cada mes -->
+  <div class="sheet" id="sheet" aria-hidden="true">
+    <div class="sheet-in">
+      <div class="flip" id="pol" tabindex="0" role="button" aria-label="Girar para leer la carta">
+        <div class="flip-in">
+          <div class="face front">
+            <div class="foto" id="polFoto"><img id="polImg" alt=""></div>
+            <div class="cap"><strong id="polTit"></strong><span id="polSub"></span></div>
+          </div>
+          <div class="face back paper">
+            <h2 id="bkTit"></h2>
+            <p id="bkTxt"></p>
+            <p class="firma" id="bkFirma"></p>
+          </div>
+        </div>
+      </div>
+      <p class="tip">Toca la foto para leer mi carta</p>
+      <button class="btn ghost" id="cerrar">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Única librería externa de código: confeti -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+<script>
+/* ================== UTILIDADES ================== */
+const $ = (s, r = document) => r.querySelector(s);
+const crea = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
+const leer = k => { try { return JSON.parse(localStorage.getItem(k) || "[]"); } catch (e) { return []; } };
+const guardar = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
+const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const COLORES = ["#ffd978", "#e59aab", "#fbf1de", "#d9a954"];
+const app = $("#app"), scroll = $("#scroll");
+
+/* ================== TEXTOS DESDE CONFIG ================== */
+document.querySelectorAll("[data-nombre]").forEach(el => el.textContent = CONFIG.NOMBRE);
+$("#introTxt").textContent = CONFIG.INTRO_TEXTO;
+$("#btnAbrir").textContent = CONFIG.BOTON_ABRIR;
+$("#heroTxt").textContent = CONFIG.HERO_TEXTO;
+$("#cierreEst").textContent = CONFIG.CIERRE_ESTRELLAS;
+$("#valesTit").textContent = CONFIG.VALES_TITULO;
+$("#todoTit").textContent = CONFIG.PENDIENTES_TITULO;
+$("#todoHint").textContent = CONFIG.PENDIENTES_HINT;
+$("#finTit").textContent = CONFIG.FINAL.titulo;
+$("#firmaF").textContent = CONFIG.FINAL.firma + ", " + CONFIG.TU_NOMBRE + " ♥";
+$("#btnFinal").textContent = CONFIG.FINAL.boton;
+
+/* ================== CIELO: ESTRELLAS Y CORAZONES ================== */
+(function () {
+  const sky = $("#sky");
+  for (let i = 0; i < 70; i++) {
+    const s = crea("i"), z = 1 + Math.random() * 2;
+    s.style.cssText = `left:${Math.random() * 100}%;top:${Math.random() * 100}%;width:${z}px;height:${z}px;` +
+      `animation-delay:${-Math.random() * 6}s;animation-duration:${3 + Math.random() * 4}s`;
+    sky.appendChild(s);
+  }
+  for (let i = 0; i < 10; i++) {
+    const h = crea("span", null, "♥");
+    h.style.cssText = `left:${Math.random() * 100}%;font-size:${10 + Math.random() * 18}px;` +
+      `animation-duration:${14 + Math.random() * 14}s;animation-delay:${-Math.random() * 20}s`;
+    sky.appendChild(h);
+  }
+})();
+
+/* ================== CONTADOR EN TIEMPO REAL ================== */
+const inicio = new Date(CONFIG.FECHA_INICIO);
+function sumarMeses(f, n) {                       // meses de calendario (22 jun + 4 = 22 oct)
+  const r = new Date(f), d = r.getDate();
+  r.setMonth(r.getMonth() + n);
+  if (r.getDate() !== d) r.setDate(0);
+  return r;
+}
+function tick() {
+  const ahora = new Date();
+  let meses = 0, resto = 0, pct = 0;
+  if (ahora > inicio) {
+    meses = (ahora.getFullYear() - inicio.getFullYear()) * 12 + ahora.getMonth() - inicio.getMonth();
+    let ancla = sumarMeses(inicio, meses);
+    if (ancla > ahora) { meses--; ancla = sumarMeses(inicio, meses); }
+    resto = ahora - ancla;
+    pct = Math.min(100, resto / (sumarMeses(inicio, meses + 1) - ancla) * 100);
+  }
+  $("#cMeses").textContent = meses;
+  $("#cDias").textContent = Math.floor(resto / 864e5);
+  $("#cHoras").textContent = Math.floor(resto % 864e5 / 36e5);
+  $("#cMin").textContent = String(Math.floor(resto % 36e5 / 6e4)).padStart(2, "0");
+  $("#cSeg").textContent = String(Math.floor(resto % 6e4 / 1e3)).padStart(2, "0");
+  $("#progTxt").textContent = `Camino al mes ${meses + 1}: ${Math.floor(pct)}%`;
+  $("#progBar").style.width = pct + "%";
+}
+tick(); setInterval(tick, 1000);
+
+/* ================== CONSTELACIÓN + HOJA DE RECUERDO ================== */
+const sheet = $("#sheet"), pol = $("#pol"), vistas = new Set();
+let completo = false;
+$("#polImg").onerror = () => $("#polFoto").classList.add("nofoto");
+
+function abreMes(i) {
+  const m = CONFIG.MESES[i]; if (!m) return;
+  vistas.add(i);
+  document.querySelector(`.star[data-i="${i}"]`).classList.add("on");
+  document.querySelectorAll(".ln").forEach(l => {
+    if (vistas.has(+l.dataset.a) && vistas.has(+l.dataset.b)) l.classList.add("on");
+  });
+  $("#polFoto").classList.remove("nofoto");
+  $("#polImg").src = m.foto;
+  $("#polTit").textContent = m.titulo; $("#polSub").textContent = m.sub;
+  $("#bkTit").textContent = m.titulo; $("#bkTxt").textContent = m.texto;
+  $("#bkFirma").textContent = "Con amor, " + CONFIG.TU_NOMBRE + " ♥";
+  pol.classList.remove("flipped");
+  sheet.classList.add("show"); sheet.setAttribute("aria-hidden", "false");
+  $("#cerrar").focus({ preventScroll: true });
+}
+function cierraMes() {
+  sheet.classList.remove("show"); sheet.setAttribute("aria-hidden", "true");
+  if (!completo && vistas.size >= CONFIG.MESES.length) {    // ¡las 4 estrellas! se dibuja el corazón
+    completo = true;
+    setTimeout(() => {
+      $("#const").classList.add("done"); $("#cierreEst").classList.add("in");
+      setTimeout(() => confetti({ particleCount: 90, spread: 90, origin: { y: .5 }, colors: COLORES, zIndex: 200 }), 1800);
+    }, 500);
+  }
+}
+document.querySelectorAll(".star").forEach(g => {
+  const abrir = () => abreMes(+g.dataset.i);
+  g.addEventListener("click", abrir);
+  g.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); abrir(); } });
+});
+pol.addEventListener("click", () => pol.classList.toggle("flipped"));
+pol.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pol.classList.toggle("flipped"); } });
+$("#cerrar").addEventListener("click", cierraMes);
+sheet.addEventListener("click", e => { if (e.target === sheet) cierraMes(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && sheet.classList.contains("show")) cierraMes(); });
+
+/* ================== BOLETOS ================== */
+const usados = leer("vales4m");
+CONFIG.VALES.forEach((t, i) => {
+  const b = crea("button", "ticket rv");
+  const stub = crea("span", "tk-stub");
+  const em = crea("em", null, "Canjear");
+  stub.append(crea("i", null, "♥"), em);
+  b.append(crea("span", "tk-txt", t), stub);
+  const marcar = () => { b.classList.add("used"); em.textContent = "¡Reclamado!"; };
+  if (usados.includes(i)) marcar();
+  b.addEventListener("click", () => {
+    if (b.classList.contains("used")) return;
+    marcar(); usados.push(i); guardar("vales4m", usados);
+    confetti({ particleCount: 45, spread: 65, origin: { y: .7 }, colors: COLORES, zIndex: 200 });
+  });
+  $("#tickets").appendChild(b);
+});
+
+/* ================== PENDIENTES ================== */
+const hechos = leer("todo4m");
+CONFIG.PENDIENTES.forEach((t, i) => {
+  const b = crea("button", "todo rv");
+  b.append(crea("span", "chk", "♥"), crea("span", "t", t));
+  if (hechos.includes(i)) b.classList.add("on");
+  b.addEventListener("click", () => {
+    const on = b.classList.toggle("on");
+    const k = hechos.indexOf(i);
+    if (on && k < 0) hechos.push(i); else if (!on && k >= 0) hechos.splice(k, 1);
+    guardar("todo4m", hechos);
+  });
+  $("#todos").appendChild(b);
+});
+
+/* ================== CARTA FINAL: MÁQUINA DE ESCRIBIR ================== */
+let escrito = false, timer = null;
+const textoFinal = CONFIG.FINAL.mensaje.join("\n\n");
+function terminaCarta() {
+  clearInterval(timer);
+  $("#typed").textContent = textoFinal; $("#rest").textContent = "";
+  $("#firmaF").classList.add("in"); $("#btnFinal").classList.add("in");
+}
+function escribir() {
+  if (escrito) return; escrito = true;
+  if (reduce) { terminaCarta(); return; }
+  let n = 0; $("#rest").textContent = textoFinal;
+  timer = setInterval(() => {
+    n++; $("#typed").textContent = textoFinal.slice(0, n); $("#rest").textContent = textoFinal.slice(n);
+    if (n >= textoFinal.length) terminaCarta();
+  }, 34);
+}
+$("#letter").addEventListener("click", () => { if (escrito) terminaCarta(); });   // tocar la carta = mostrar todo
+
+function lluviaDeCorazones() {
+  let corazon = null;
+  try { corazon = confetti.shapeFromText({ text: "❤️", scalar: 3 }); } catch (e) {}
+  confetti({ particleCount: 150, spread: 110, origin: { y: .65 }, colors: COLORES, zIndex: 200 });
+  const fin = Date.now() + 4500;
+  (function frame() {
+    confetti({
+      particleCount: 3, angle: 270, spread: 70, startVelocity: 14, gravity: .7, ticks: 320,
+      scalar: corazon ? 3 : 1, shapes: corazon ? [corazon] : ["circle"],
+      origin: { x: Math.random(), y: -0.05 }, colors: COLORES, zIndex: 200
+    });
+    if (Date.now() < fin) requestAnimationFrame(frame);
+  })();
+}
+$("#btnFinal").addEventListener("click", lluviaDeCorazones);
+
+/* ================== APARICIÓN AL HACER SCROLL ================== */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  e.target.classList.add("in");
+  if (e.target.id === "s5") escribir();
+}), { root: scroll, threshold: .35 });
+document.querySelectorAll(".rv").forEach(el => io.observe(el));
+io.observe($("#s5"));
+
+/* Corazoncito donde toques */
+scroll.addEventListener("pointerdown", e => {
+  if (e.target.closest("button,.star")) return;
+  const r = app.getBoundingClientRect(), h = crea("span", "tap", "♥");
+  h.style.left = (e.clientX - r.left) + "px"; h.style.top = (e.clientY - r.top) + "px";
+  app.appendChild(h); setTimeout(() => h.remove(), 1200);
+});
+
+/* ================== MÚSICA ================== */
+const musica = $("#musica"), btnMusica = $("#btnMusica");
+let audioCtx = null, musicBuffer = null, musicSource = null, musicPlaying = false;
+
+async function iniciarMusica() {
+  const AudioCtor = window.AudioContext || window.webkitAudioContext;
+  if (!AudioCtor) return;
+
+  if (!audioCtx) {
+    audioCtx = new AudioCtor();
+  }
+
+  if (audioCtx.state === "suspended") {
+    await audioCtx.resume();
+  }
+
+  if (!musicBuffer) {
+    const resp = await fetch("MILO J - M.A.I (Video Oficial).mp3");
+    const arrayBuffer = await resp.arrayBuffer();
+    musicBuffer = await audioCtx.decodeAudioData(arrayBuffer.slice(0));
+  }
+
+  if (musicSource) {
+    try { musicSource.stop(); } catch (e) {}
+    musicSource.disconnect();
+  }
+
+  musicSource = audioCtx.createBufferSource();
+  musicSource.buffer = musicBuffer;
+  musicSource.loop = true;
+  musicSource.connect(audioCtx.destination);
+  musicSource.start(0);
+  musicPlaying = true;
+  btnMusica.textContent = "⏸";
+}
+
+function pausarMusica() {
+  if (!musicSource) return;
+  try { musicSource.stop(); } catch (e) {}
+  musicSource.disconnect();
+  musicSource = null;
+  musicPlaying = false;
+  btnMusica.textContent = "▶";
+}
+
+btnMusica.addEventListener("click", async () => {
+  if (musicPlaying) { pausarMusica(); return; }
+  await iniciarMusica().catch(() => {});
+  btnMusica.hidden = false;
+});
+
+/* ================== ABRIR EL SOBRE ================== */
+$("#btnAbrir").addEventListener("click", async function () {
+  this.disabled = true;
+  await iniciarMusica().catch(() => {});
+  btnMusica.hidden = false;
+  $("#envelope").classList.add("open");
+  setTimeout(() => {
+    $("#intro").classList.add("gone");
+    setTimeout(() => $("#s1").classList.add("go"), 1500);
+    confetti({ particleCount: 60, spread: 80, origin: { y: .5 }, colors: COLORES, zIndex: 200 });
+  }, 2300);
+});
+</script>
+</body>
+</html>
